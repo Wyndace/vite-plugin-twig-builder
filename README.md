@@ -1,4 +1,4 @@
-# vite-twig-pages
+# vite-plugin-twig-builder
 > A Vite plugin that renders [Twig](https://twig.symfony.com/) templates into static HTML files during the build process.
 
 > Used in [HalfDeal WebLayout Starter](https://github.com/Wyndace/halfdeal-weblayout-starter) at vite-twig-ssg branch.
