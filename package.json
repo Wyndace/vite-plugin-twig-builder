@@ -23,7 +23,10 @@
   "main": "dist/entry.js",
   "types": "dist/entry.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "LICENSE",
+    "README.md",
+    "NOTICE"
   ],
   "scripts": {
     "build": "tsc"
