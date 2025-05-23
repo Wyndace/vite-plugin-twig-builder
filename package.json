@@ -20,7 +20,6 @@
     "type": "git",
     "url": "git+https://github.com/Wyndace/vite-plugin-twig-builder.git"
   },
-  "private": true,
   "main": "dist/entry.js",
   "types": "dist/entry.d.ts",
   "files": [
