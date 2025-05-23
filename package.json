@@ -1,0 +1,43 @@
+{
+  "name": "vite-twig-pages",
+  "version": "1.0.0",
+  "description": "Vite plugin to render Twig templates into static HTML pages during development and build",
+  "author": "Wyndace <Aleksandr Vasilev>",
+  "type": "module",
+  "keywords": [
+    "halfdeal",
+    "hafldeal-weblayout-starter",
+    "vite",
+    "vite-plugin",
+    "twig",
+    "html",
+    "templates",
+    "static-site",
+    "frontend"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wyndace/vite-twig-pages.git"
+  },
+  "private": true,
+  "main": "dist/entry.js",
+  "types": "dist/entry.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "twig": "^1.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "@types/twig": "^1.12.16",
+    "typescript": "^5.8.2",
+    "vite": "6.3.5"
+  },
+  "peerDependencies": {
+    "vite": "6.3.5"
+  }
+}
