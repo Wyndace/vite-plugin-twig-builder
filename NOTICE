@@ -1,0 +1,11 @@
+If you distribute your project under Apache 2.0 and include third-party attributions, include a NOTICE file alongside your LICENSE:
+
+This product includes software developed by:
+  • Vasilev Aleksandr — https://github.com/Wyndace
+  • Twig — Copyright 2009-present by the Twig Team
+  • Twig.js — Copyright 2011-2015, John Roepke and the Twig.js Contributors
+  • Vite — Copyright 2019-present, VoidZero Inc. and Vite contributors
+
+Project home: https://github.com/Wyndace/vite-twig-pages
+
+Copyright 2025 Aleksandr Alekseevich Vasilev (Александр Алексеевич Васильев)
