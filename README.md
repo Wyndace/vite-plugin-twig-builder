@@ -47,6 +47,8 @@ You can pass an optional configuration object to `twigPages()`:
 
 > **Note:** If you do not specify these options, the plugin will use values from Vite's own config (`root`, `build.outDir`) where appropriate.
 
+## License
+This project is licensed under the Apache License 2.0. See [LICENSE](https://raw.githubusercontent.com/Wyndace/vite-twig-pages/refs/heads/main/LICENSE) for details.
 
 ## Author
 <p align="center">Vasilev Aleksandr</p>
