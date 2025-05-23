@@ -1,10 +1,12 @@
 import twigPkg from 'twig';
-const { renderFile } = twigPkg;
+const {cache, renderFile } = twigPkg;
 import fs from 'fs';
 import path from 'path';
 import { ServerResponse, IncomingMessage } from 'http';
 import { Connect} from 'vite';
 import TwigPagesConfig from '../types/TwigPagesConfig';
+
+cache(false);
 
 function isFileWithSpecificExtensions(filePath: string, extensions: string[]) {
     return extensions.some((extension) => filePath.endsWith(extension));
