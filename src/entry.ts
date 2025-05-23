@@ -15,19 +15,21 @@ export default function twigPages(userConfig: TwigPagesConfig = defaultConfig): 
     return {
         name: 'vite-plugin-twig-pages',
         configResolved(resolvedConfig) {
-            viteConfig = resolvedConfig;
+            config.root = config.root || resolvedConfig.build.outDir;
+            config.outDir = config.outDir || resolvedConfig.build.outDir;
+            config.dir = config.dir || config.root;
         },
 
         async generateBundle(){
-            const root = config.root || viteConfig.root; // viteConfig.root — абсолютный путь
-            const outDir = config.outDir || viteConfig.build.outDir;
-            const dir = config.dir || root;
+            const root = config.root
+            const outDir = config.outDir;
+            const dir = config.dir;
             const extensions = config.extensions;
             await renderAndWriteFilesInDir(dir, extensions, outDir, root);
         },
         configureServer(server) {
             server.middlewares.use(async (req, res, next) => {
-                const handled = await handleTwigDevRequest(req, res, userConfig);
+                const handled = await handleTwigDevRequest(req, res, config);
                 if (!handled) next();
             });
         }
