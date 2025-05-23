@@ -45,28 +45,38 @@ function renderTwigFile(filePath: string, base?: string): Promise<string> {
     });
 }
 
-export async function handleTwigDevRequest(req: Connect.IncomingMessage, res: ServerResponse<IncomingMessage>, config: TwigPagesConfig) {
-    if (req.url && req.url.endsWith('.html')) {
-        const pageName = req.url.replace(/^\//, '').replace(/\.html$/, '');
-        let twigPath = path.join(config.dir || './src/pages', `${pageName}.twig`);
-        if (!fs.existsSync(twigPath)) {
-            twigPath = path.join(config.dir || './src/pages', `${pageName}.twig.html`);
-        }
-        if (fs.existsSync(twigPath)) {
-            try {
-                const html = await renderTwigFile(twigPath, config.root || './src');
-                res.setHeader('Content-Type', 'text/html');
-                res.end(html);
-                return true; // handled
-            } catch (err) {
-                res.statusCode = 500;
-                res.end(`Twig render error: ${err}`);
-                return true;
+export async function handleTwigDevRequest(
+    req: Connect.IncomingMessage,
+    res: ServerResponse<IncomingMessage>,
+    config: TwigPagesConfig
+): Promise<boolean> {
+    const url = req.url || '';
+    if (url === '/' || url === '/index.html' || url.endsWith('.html')) {
+        const page = url === '/' ? 'index' : url.replace(/^\//, '').replace(/\.html$/, '');
+        const tries = config.extensions.map(ext => `${page}${ext}`);
+        let twigPath: string | null = null;
+        for (const name of tries) {
+            const p = path.resolve(config.dir, name);
+            if (fs.existsSync(p)) {
+                twigPath = p;
+                break;
             }
         }
+        if (twigPath) {
+            try {
+                const html = await renderTwigFile(twigPath, config.root);
+                res.setHeader('Content-Type', 'text/html');
+                res.end(html);
+            } catch (e) {
+                res.statusCode = 500;
+                res.end(`Twig render error: ${e}`);
+            }
+            return true;
+        }
     }
-    return false; // not handled
+    return false;
 }
+
 export async function renderAndWriteFilesInDir(dir: string, extensions: string[], outDir: string, base?: string) {
     const files = getFilesWithSpecificExtensionsInDir(dir, extensions);
     for (const filePath of files) {
