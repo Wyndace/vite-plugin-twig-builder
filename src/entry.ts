@@ -1,5 +1,5 @@
 import TwigPagesConfig from "./types/TwigPagesConfig.js";
-import {renderAndWriteFilesInDir} from "./functions/render.js";
+import {handleTwigDevRequest, renderAndWriteFilesInDir} from "./functions/render.js";
 import {Plugin, ResolvedConfig} from 'vite';
 
 const defaultConfig: TwigPagesConfig = {
@@ -24,6 +24,12 @@ export default function twigPages(userConfig: TwigPagesConfig = defaultConfig): 
             const dir = config.dir || root;
             const extensions = config.extensions;
             await renderAndWriteFilesInDir(dir, extensions, outDir, root);
+        },
+        configureServer(server) {
+            server.middlewares.use(async (req, res, next) => {
+                const handled = await handleTwigDevRequest(req, res, userConfig);
+                if (!handled) next();
+            });
         }
     }
 }
