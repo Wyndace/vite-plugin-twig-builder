@@ -12,18 +12,18 @@
 
 ## Installation
 ```bash
-  npm install vite-twig-pages
+  npm install vite-plugin-twig-builder
 ```
 
 ## Usage
 ```javascript
 // vite.config.js
 import { defineConfig } from 'vite'
-import viteTwigPages from 'vite-twig-pages'
+import twigBuilder from 'vite-plugin-twig-builder'
 
 export default defineConfig({
     plugins: [
-        viteTwigPages({
+        twigBuilder({
             // Optional: override defaults (see below for config options)
             root: './src',
             dir: './src/pages',
@@ -36,7 +36,7 @@ export default defineConfig({
 ```
 
 ## Configuration
-You can pass an optional configuration object to `twigPages()`:
+You can pass an optional configuration object to `twigBuilder()`:
 
 | Option       | Type         | Default                         | Description                                   |
 |--------------|--------------|---------------------------------|-----------------------------------------------|
@@ -48,7 +48,7 @@ You can pass an optional configuration object to `twigPages()`:
 > **Note:** If you do not specify these options, the plugin will use values from Vite's own config (`root`, `build.outDir`) where appropriate.
 
 ## License
-This project is licensed under the Apache License 2.0. See [LICENSE](https://raw.githubusercontent.com/Wyndace/vite-twig-pages/refs/heads/main/LICENSE) for details.
+This project is licensed under the Apache License 2.0. See [LICENSE](https://raw.githubusercontent.com/Wyndace/vite-plugin-twig-builder/refs/heads/main/LICENSE) for details.
 
 ## Author
 <p align="center">Vasilev Aleksandr</p>

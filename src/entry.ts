@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-import TwigPagesConfig from "./types/TwigPagesConfig.js";
+import TwigBuilderConfig from "./types/TwigBuilderConfig";
 import {handleTwigDevRequest, renderAndWriteFilesInDir} from "./functions/render.js";
-import {Plugin, ResolvedConfig} from 'vite';
+import {Plugin} from 'vite';
 
-const defaultConfig: TwigPagesConfig = {
+const defaultConfig: TwigBuilderConfig = {
     root: './src',
     dir: './src/pages',
     outDir: './dist',
     extensions: ['.twig', '.twig.html'],
 }
 
-export default function twigPages(userConfig: TwigPagesConfig = defaultConfig): Plugin {
+export default function twigBuilder(userConfig: TwigBuilderConfig = defaultConfig): Plugin {
     const config = { ...defaultConfig, ...userConfig };
     return {
-        name: 'vite-plugin-twig-pages',
+        name: 'vite-plugin-twig-builder',
         configResolved(resolvedConfig) {
             config.root = config.root || resolvedConfig.build.outDir;
             config.outDir = config.outDir || resolvedConfig.build.outDir;

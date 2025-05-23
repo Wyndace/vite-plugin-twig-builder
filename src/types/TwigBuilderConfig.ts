@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default interface TwigPagesConfig {
+export default interface TwigBuilderConfig {
     root: string;
     dir: string;
     outDir: string;

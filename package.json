@@ -1,5 +1,5 @@
 {
-  "name": "vite-twig-pages",
+  "name": "vite-plugin-twig-builder",
   "version": "1.0.0",
   "description": "Vite plugin to render Twig templates into static HTML pages during development and build",
   "author": "Wyndace <Aleksandr Vasilev>",
@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Wyndace/vite-twig-pages.git"
+    "url": "git+https://github.com/Wyndace/vite-plugin-twig-builder.git"
   },
   "private": true,
   "main": "dist/entry.js",
@@ -26,7 +26,6 @@
   "files": [
     "dist",
     "LICENSE",
-    "README.md",
     "NOTICE"
   ],
   "scripts": {

@@ -19,7 +19,7 @@ import fs from 'fs';
 import path from 'path';
 import { ServerResponse, IncomingMessage } from 'http';
 import { Connect} from 'vite';
-import TwigPagesConfig from '../types/TwigPagesConfig';
+import TwigBuilderConfig from '../types/TwigBuilderConfig';
 
 cache(false);
 
@@ -65,7 +65,7 @@ function renderTwigFile(filePath: string, base?: string): Promise<string> {
 export async function handleTwigDevRequest(
     req: Connect.IncomingMessage,
     res: ServerResponse<IncomingMessage>,
-    config: TwigPagesConfig
+    config: TwigBuilderConfig
 ): Promise<boolean> {
     const url = req.url || '';
     if (url === '/' || url === '/index.html' || url.endsWith('.html')) {
